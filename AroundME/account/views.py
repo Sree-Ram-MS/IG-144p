@@ -6,3 +6,7 @@ from django.views.generic import View
 class Homepage(View):
     def get(self,req,*args,**kwargs):
         return render(req,"Homepage.html")
+    
+class SignUp(View):
+    def get(self,req,*args,**kwargs):
+        return render(req,"SignUp.html")
