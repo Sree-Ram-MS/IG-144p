@@ -19,22 +19,21 @@
   
   <body>
     <main>
-    <div class="page">
+    <div class="page" >
         <div class="header">
             <div >
                 <img src="/static/images/logo1.png" width="250px">
               </div>
-          <p>Sign up to see photos and videos from your friends.</p>
+          
         </div>
         <div class="container">
-          <form action="">
-            <input type="text" placeholder="First_name">
-            <input type="text" placeholder="Last_name">
-            <input type="email" placeholder="G-mail">
-            <input type="number" placeholder="Phone">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Confirm Password">
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}  
+
+            <table>
+              {{ form.as_table }}
+            </table>
+
             <button>Sign up</button>
           </form>
           
@@ -48,7 +47,7 @@
         </div>
     </div>
     <div class="option">
-       <p>Have an account? <a href="Homepage.html">Log in</a></p>
+       <p>Have an account? <a href={% url 'Homepage' %}>Log in</a></p>
     </div>
     <div class="footer">
       <ul>

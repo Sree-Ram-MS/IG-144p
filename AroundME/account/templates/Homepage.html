@@ -20,19 +20,32 @@
   <body>
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
 
+    {% if messages %}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{i}}
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
     <div id="wrapper">
       <div class="main-content">
         <div >
           <img src="/static/images/logo1.png" width="250px">
         </div>
         <br>
-        <div class="l-part">
-          <input type="text" placeholder="Username" class="input-1" />
-          <div class="overlap-text">
-          <input type="password" placeholder="Password" class="input-2" />
-          </div>
-          <input type="button" value="Log in" class="btn" />
-        </div>
+        <form action="" method="post">
+          {% csrf_token %}  
+
+          <table>
+            {{ form.as_table }}
+          </table>
+
+          <button>Login</button>
+        </form>
       </div>
       <div class="sub-content">
         <div class="s-part">
