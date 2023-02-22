@@ -30,6 +30,16 @@
       {% endif %}
     {% endfor %}
   {% endif %}
+    {% if messages %}
+    {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{i}}
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
   
     <div id="wrapper">
       <div class="main-content">
@@ -40,11 +50,11 @@
         <form action="" method="post">
          {% csrf_token %}  
           <div class="l-part">
-            <input type="text" name="username" placeholder="Username" class="input-1" />
+            <input type="text" name="{{ form.username.html_name }}" placeholder="Username" class="input-1" />
             <div class="overlap-text">
-            <input type="password" name="password" placeholder="Password" class="input-2" />
+            <input type="password" name="{{ form.password.html_name }}" placeholder="Password" class="input-2" />
             </div>
-            <input type="button" value="Log in" class="btn" />
+            <button class="btn">Log in</button>
           </div>
         </form>
         </div>

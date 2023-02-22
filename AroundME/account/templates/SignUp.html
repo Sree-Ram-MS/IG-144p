@@ -28,13 +28,14 @@
         </div>
         <div class="container">
           <form action="" method="post">
-          {% csrf_token %}  
-
-            <table>
-              {{ form.as_p }}
-            </table>
-
-            <button>Sign up</button>
+          {% csrf_token %} 
+          <input type="text" name="{{ form.first_name.html_name }}" placeholder="First Name">
+            <input type="text" name="{{ form.last_name.html_name }}" placeholder="Last Name">
+            <input type="email" name="{{ form.email.html_name }}" placeholder="G-Mail">
+            <input type="text" name="{{ form.username.html_name }}" placeholder="Username">
+            <input type="password" name="{{ form.password1.html_name }}" placeholder="Password">
+            <input type="password" name="{{ form.password2.html_name }}" placeholder="Confirm Password">
+            <button class="btn">Sign up</button> 
           </form>
           
           <ul>
