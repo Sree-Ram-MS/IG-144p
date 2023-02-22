@@ -126,5 +126,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://say-my-name-heisenberg-probable-space-qrx9qrjr7qq2994p.github.dev/'
+    'https://sree-ram-ms-upgraded-spoon-xq76pwwx7xwf99v-8000.preview.app.github.dev',
+    'https://sree-ram-ms-upgraded-spoon-xq76pwwx7xwf99v.github.dev'
 ]

@@ -38,21 +38,22 @@
         </div>
         <br>
         <form action="" method="post">
-          {% csrf_token %}  
-
-          <table>
-            {{ form.as_table }}
-          </table>
-
-          <button>Login</button>
+         {% csrf_token %}  
+          <div class="l-part">
+            <input type="text" name="username" placeholder="Username" class="input-1" />
+            <div class="overlap-text">
+            <input type="password" name="password" placeholder="Password" class="input-2" />
+            </div>
+            <input type="button" value="Log in" class="btn" />
+          </div>
         </form>
-      </div>
-      <div class="sub-content">
-        <div class="s-part">
-          Don't have an account?<a href="{% url 'SignUp' %}">Sign up</a>
+        </div>
+        <div class="sub-content">
+          <div class="s-part">
+            Don't have an account?<a href={% url 'SignUp' %}>Sign up</a>
+          </div>
         </div>
       </div>
-    </div>
 
     <footer class="footer" role="contentinfo">
       <div class="footer-container">
