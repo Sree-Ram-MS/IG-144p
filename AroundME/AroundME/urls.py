@@ -21,5 +21,6 @@ from account.views import Homepage
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('account/',include('account.urls')),
+    path('user/',include('user.urls')),
     path('',Homepage.as_view(),name='Homepage'),
 ]
