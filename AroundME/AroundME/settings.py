@@ -129,3 +129,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://sree-ram-ms-upgraded-spoon-xq76pwwx7xwf99v-8000.preview.app.github.dev',
     'https://sree-ram-ms-upgraded-spoon-xq76pwwx7xwf99v.github.dev'
 ]
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
