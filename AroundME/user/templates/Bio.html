@@ -1,0 +1,10 @@
+{% extends 'UserNav.html' %}
+{% block nav %}
+<h2>Add Bio</h2>
+<form method="post" >
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    
+    </table>
+{% endblock nav %}

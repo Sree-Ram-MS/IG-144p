@@ -8,6 +8,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<a class="profile-edit-btn" href={% url 'BioEdit' %}><input type="submit"  name="btnAddMore" value="Edit Profile" /></a>
+
 <div class="container emp-profile">
             <form method="post"> {% csrf_token %}  
                 <div class="row">
@@ -41,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <a class="profile-edit-btn" href={% url 'BioEdit' %}><input type="submit"  name="btnAddMore" value="Edit Profile" /></a>
                     </div>
                 </div>
                 <div class="row">
