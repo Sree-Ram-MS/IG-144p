@@ -8,18 +8,14 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<a class="profile-edit-btn" href={% url 'BioEdit' %}><input type="submit"  name="btnAddMore" value="Edit Profile" /></a>
+
 
 <div class="container emp-profile">
-            <form method="post"> {% csrf_token %}  
+            <form action="{% url 'AddBio' %}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                            <img src="{{ user.Bio_user.profile_pic.url }}" />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -43,18 +39,18 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a class="profile-edit-btn" href={% url 'BioEdit' %}><input type="submit"  name="btnAddMore" value="Edit Profile" /></a>
+                        {% if request.user.Bio_user %}
+                        <input class="profile-edit-btn" type="submit"  name="btnAddMore" value="Edit Bio" /></a>
+                        {% else %}
+                        <input class="profile-edit-btn" type="submit"  name="btnAddMore" value="Add Bio" /></a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>Status</p>
-                            <a href="">KL 18</a><br/>
-                            <a href="">Kannappi</a><br/>
-                            <a href="">Night Rider</a>
-                            <a href="">Arakkkal Tharavadu</a><br/>
-                            <a href="">wish me on 12/12/12</a><br/>
+                            <h3>Status</h3>
+                            <p>{{request.user.Bio_user.status}}</p>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -89,7 +85,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{request.user.Bio_user.phone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -97,7 +93,7 @@
                                                 <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>She/Him 🏳️‍🌈</p>
+                                                <p>{{request.user.Bio_user.gender}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -105,7 +101,7 @@
                                                 <label>Date of Birth</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>01/01/2001</p>
+                                                <p>{{request.user.Bio_user.dob}}</p>
                                             </div>
                                         </div>
                             </div>

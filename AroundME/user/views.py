@@ -18,7 +18,7 @@ class LogOut(View):
         logout(req)
         return redirect("Homepage")
     
-class BioEdit(CreateView):
+class BioAdd(CreateView):
     form_class=BioForm
     template_name="Bio.html"
     model=Bio
@@ -28,3 +28,7 @@ class BioEdit(CreateView):
         self.object = form.save()
         messages.success(self.request,"Bio Updated")
         return super().form_valid(form)
+
+class BioEdit(CreateView):
+    form_class=BioForm
+    template_name=

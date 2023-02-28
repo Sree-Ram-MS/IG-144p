@@ -49,9 +49,12 @@
         <br>
         <form action="" method="post">
          {% csrf_token %}  
+         {{ form.non_field_errors }}
           <div class="l-part">
+            {{ form.username.error }}
             <input type="text" name="{{ form.username.html_name }}" placeholder="Username" class="input-1" />
             <div class="overlap-text">
+              {{ form.password.error }}
             <input type="password" name="{{ form.password.html_name }}" placeholder="Password" class="input-2" />
             </div>
             <button class="btn">Log in</button>
