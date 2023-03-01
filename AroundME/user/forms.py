@@ -10,3 +10,7 @@ class BioForm(forms.ModelForm):
             "gender":forms.Select(attrs={"class":"form-control"}),
             "phone":forms.NumberInput(attrs={"class":"form-control"}),
         }
+
+def __init__(self,user,*args, **kwargs):
+    self.user = user
+    super(BioForm,self).__init__(*args,**kwargs)

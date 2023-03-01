@@ -8,10 +8,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+<a href="{% url 'EditBio' %}"><button>Edit</button></a>
 
 <div class="container emp-profile">
-            <form action="{% url 'AddBio' %}" enctype="multipart/form-data">
+            <form action="{% url 'EditBio' %}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -42,7 +42,7 @@
                         {% if request.user.Bio_user %}
                         <input class="profile-edit-btn" type="submit"  name="btnAddMore" value="Edit Bio" /></a>
                         {% else %}
-                        <input class="profile-edit-btn" type="submit"  name="btnAddMore" value="Add Bio" /></a>
+                        <input class="profile-edit-btn"  type="submit"  name="btnAddMore" value="Add Bio" /></a>
                         {% endif %}
                     </div>
                 </div>

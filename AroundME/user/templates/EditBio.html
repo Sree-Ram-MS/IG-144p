@@ -1,9 +1,9 @@
 {% extends 'UserNav.html' %}
 {% block nav %}
-<h2>Add Bio</h2>
+<h2>Edit Bio</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     
         {{form.as_p}}
-   <button>Submit</button>
+   <button>Update</button>
 {% endblock nav %}

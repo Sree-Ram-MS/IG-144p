@@ -5,6 +5,8 @@ from .forms import BioForm
 from .models import Bio
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 class UserHome(TemplateView):
@@ -29,6 +31,20 @@ class BioAdd(CreateView):
         messages.success(self.request,"Bio Updated")
         return super().form_valid(form)
 
-class BioEdit(CreateView):
-    form_class=BioForm
-    template_name=
+
+class BioEdit(View):
+    def get(self,req,*args,**kwargs,id):
+        Bioid=Bio.objects.get(id=id)
+        form=BioForm(instance=Bioid)
+        return render(req,"BioEdit.html",{"form":form})
+    def post(self,req,*args,**kwargs):
+        id=kwargs.get("sid")
+        Bio=Bio.objects.get(id=id)
+        form_data=BioForm(data=req.POST,files=req.FILES)
+        if form_data.is_valid():
+            form_data.save()
+            messages.success(req,"Bio Details Updated")
+            return redirect ('Profile')
+        else:
+            messages.success(req,"Bio Details Updation failed")
+            return render (req,"BioEdit.html",{"form":form_data})
