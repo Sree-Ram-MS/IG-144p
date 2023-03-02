@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views.generic import View,TemplateView,CreateView
+from django.views.generic import View,TemplateView,CreateView,UpdateView
 from django.contrib.auth import logout
 from .forms import BioForm
 from .models import Bio
@@ -32,19 +32,12 @@ class BioAdd(CreateView):
         return super().form_valid(form)
 
 
-class BioEdit(View):
-    def get(self,req,*args,**kwargs,id):
-        Bioid=Bio.objects.get(id=id)
-        form=BioForm(instance=Bioid)
-        return render(req,"BioEdit.html",{"form":form})
-    def post(self,req,*args,**kwargs):
-        id=kwargs.get("sid")
-        Bio=Bio.objects.get(id=id)
-        form_data=BioForm(data=req.POST,files=req.FILES)
-        if form_data.is_valid():
-            form_data.save()
-            messages.success(req,"Bio Details Updated")
-            return redirect ('Profile')
-        else:
-            messages.success(req,"Bio Details Updation failed")
-            return render (req,"BioEdit.html",{"form":form_data})
+class BioEdit(UpdateView):
+    form_class=BioForm
+    model=Bio
+    template_name="EditBio.html"
+    success_url=reverse_lazy("Profile")
+    pk_url_kwarg="pk"
+
+class ChangePassword(UpdateView):
+    form_class=

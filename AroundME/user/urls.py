@@ -6,7 +6,7 @@ urlpatterns = [
     path("profie/",Profile.as_view(),name="Profile"),
     path("logout/",LogOut.as_view(),name="Logout"),
     path("AddBio/",BioAdd.as_view(),name="AddBio"),
-    path("EditBio/",BioEdit.as_view(),name="EditBio"),
+    path("EditBio/<int:pk>",BioEdit.as_view(),name="EditBio"),
 
 ] 
 

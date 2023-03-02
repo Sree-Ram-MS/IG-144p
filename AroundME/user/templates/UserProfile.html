@@ -8,10 +8,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<a href="{% url 'EditBio' %}"><button>Edit</button></a>
 
 <div class="container emp-profile">
-            <form action="{% url 'EditBio' %}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -40,9 +38,10 @@
                     </div>
                     <div class="col-md-2">
                         {% if request.user.Bio_user %}
-                        <input class="profile-edit-btn" type="submit"  name="btnAddMore" value="Edit Bio" /></a>
+                        <a href="{% url 'EditBio' request.user.Bio_user.id %}"><input class="profile-edit-btn" type="submit"   name="btnAddMore" value="Edit Bio" /></a>
+                        <a href="{% url 'EditBio' request.user.Bio_user.id %}"><input class="profile-edit-btn" type="submit"   name="btnAddMore" value="Change Password" /></a>
                         {% else %}
-                        <input class="profile-edit-btn"  type="submit"  name="btnAddMore" value="Add Bio" /></a>
+                        <a href="{% url 'AddBio' %}"><input class="profile-edit-btn"  type="submit"  href="{% url 'AddBio' %}" name="btnAddMore" value="Add Bio" /></a>
                         {% endif %}
                     </div>
                 </div>
@@ -156,7 +155,6 @@
                         </div>
                     </div>
                 </div>
-            </form>           
         </div>
 
 {% endblock nav %}
