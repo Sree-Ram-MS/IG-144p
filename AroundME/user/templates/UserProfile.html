@@ -39,7 +39,7 @@
                     <div class="col-md-2">
                         {% if request.user.Bio_user %}
                         <a href="{% url 'EditBio' request.user.Bio_user.id %}"><input class="profile-edit-btn" type="submit"   name="btnAddMore" value="Edit Bio" /></a>
-                        <a href="{% url 'EditBio' request.user.Bio_user.id %}"><input class="profile-edit-btn" type="submit"   name="btnAddMore" value="Change Password" /></a>
+                        <a href="{% url 'CPass'  %}"><input class="profile-edit-btn" type="submit"   name="btnAddMore" value="Change Password" /></a>
                         {% else %}
                         <a href="{% url 'AddBio' %}"><input class="profile-edit-btn"  type="submit"  href="{% url 'AddBio' %}" name="btnAddMore" value="Add Bio" /></a>
                         {% endif %}

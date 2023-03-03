@@ -11,9 +11,10 @@
     {% endfor %}
   {% endif %}
 
-<form method="post"> 
+<form method="post" enctype="multipart/form-data"> 
     {% csrf_token %}  
 
-<h1>No Posts Yet!</h1>
+    {{form.as_p}}
+    <button>Submit</button>
 </form>
 {% endblock nav %}
