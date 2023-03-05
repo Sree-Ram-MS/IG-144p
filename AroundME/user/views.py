@@ -73,3 +73,4 @@ class ChangePassword(FormView):
                 return redirect("CPass")
         else:
             return render(req,"ChangePassword.html",{"form":form_data})
+
