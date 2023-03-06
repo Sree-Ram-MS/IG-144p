@@ -6,9 +6,10 @@ class BioForm(forms.ModelForm):
         model=Bio
         exclude=["user"]
         widgets={
-            "dob":forms.DateInput(attrs={"type":"date"}),
+            "dob":forms.DateInput(attrs={"type":"date","class":"form-control form-control-lg"}),
             "gender":forms.Select(attrs={"class":"form-control"}),
-            "phone":forms.NumberInput(attrs={"class":"form-control"}),
+            "phone":forms.NumberInput(attrs={"class":"form-control form-control-lg"}),
+            "status":forms.TextInput(attrs={"class":"form-control"}),
         }
 
 class CPForm(forms.Form):
