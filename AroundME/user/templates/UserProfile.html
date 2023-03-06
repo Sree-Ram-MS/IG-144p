@@ -156,5 +156,17 @@
                     </div>
                 </div>
         </div>
+        <div>
+            {% for i in data %}
+            <div class="card" style="width: 30rem;">
+              {% if i.Image %}
+              <img class="card-img-top mb-5 " src="{{i.Image.url}}" alt="Card image cap">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{i.datetime}}</h5>
+                <p class="card-text">{{i.caption}}</p>
+              </div>
+              {% endfor %}
+        </div>
 
 {% endblock nav %}

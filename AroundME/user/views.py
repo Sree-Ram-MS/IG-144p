@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View,TemplateView,CreateView,UpdateView,FormView
 from django.contrib.auth import logout,authenticate
-from .forms import BioForm,CPForm,PostForm
+from .forms import BioForm,CPForm,PostForm,UserPostForm
 from .models import Bio,Posts
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -19,9 +19,22 @@ class UserHome(CreateView):
         messages.success(self.request,'Post Uploaded')
         self.object=form.save()
         return super().form_valid(form)
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["data"]=Posts.objects.all().order_by('-datetime')
+        # user=req.user
+        return context
 
-class Profile(TemplateView):
+class Profile(CreateView):
     template_name="UserProfile.html"
+    form_class=UserPostForm
+    model=Posts
+    success_url=reverse_lazy("profile")
+    def get_context_data(self,*args,**kwargs):
+        context=super().get_context_data(*args,**kwargs)
+        id=self.request.user
+        context["data"]=Posts.objects.filter(id).order_by('-datetime')
+        return context
 
 class LogOut(View):
     def get(self,req):

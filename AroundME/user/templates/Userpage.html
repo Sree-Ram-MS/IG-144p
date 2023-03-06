@@ -11,10 +11,44 @@
     {% endfor %}
   {% endif %}
 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Post Something
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+
 <form method="post" enctype="multipart/form-data"> 
     {% csrf_token %}  
+<table class="table table-success">
+    {{form.as_table}}
+  <tr>
+    <td colspan="2" class="text-center">
+    <button class="btn btn-success">Submit</button></td>
 
-    {{form.as_p}}
-    <button>Submit</button>
-</form>
+    </table>
+    </form>
+  </div>
+
+    {% for i in data %}
+  <div class="card" style="width: 30rem;">
+    {% if i.Image %}
+    <img class="card-img-top mb-5 " src="{{i.Image.url}}" alt="Card image cap">
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{i.datetime}}</h5>
+      <p class="card-text">{{i.caption}}</p>
+    </div>
+    {% endfor %}
+
+    {% comment %} <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div> {% endcomment %}
+  </div>
+
 {% endblock nav %}

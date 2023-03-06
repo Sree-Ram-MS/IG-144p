@@ -25,7 +25,7 @@
 
           <form class="form-inline my-2 my-lg-0">
               <a class="navbar-brand navbar-right " href={% url 'Profile' %}>
-                {% if request.user.Bio_user %}
+              {% if request.user.Bio_user %}
               <img  class="circle" alt="CompanyLogo" src="{{ user.Bio_user.profile_pic.url }}" width="50" height="50" />
               {% else %}
               <img  class="circle" alt="CompanyLogo" src="static/images/userlogo.png" width="50" height="50" />

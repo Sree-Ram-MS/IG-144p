@@ -25,3 +25,12 @@ class PostForm(forms.ModelForm):
             "Image":forms.FileInput(),
             "caption":forms.TextInput(),
         }
+
+class UserPostForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields = ["Image","caption"]
+        widgets={
+            "Image":forms.FileInput(),
+            "caption":forms.TextInput(),
+        }
