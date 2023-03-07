@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.views.generic import View,TemplateView,CreateView,UpdateView,FormView
+from django.shortcuts import render,redirect,reverse
+from django.views.generic import View,TemplateView,CreateView,UpdateView,FormView,DeleteView
 from django.contrib.auth import logout,authenticate
 from .forms import BioForm,CPForm,PostForm
 from .models import Bio,Posts
@@ -24,6 +24,21 @@ class UserHome(CreateView):
         context["data"]=Posts.objects.all().order_by('-datetime')
         # user=req.user
         return context
+
+class PostEdit(UpdateView):
+    form_class=PostForm
+    model=Posts
+    template_name="EditPost.html"
+    success_url=reverse_lazy("Profile")
+    pk_url_kwarg="pk"
+
+class PostDelete(DeleteView):
+    model=Posts
+    template_name="DeletePost.html"
+    success_url=reverse_lazy("Profile")
+    pk_url_kwarg="pk"
+
+    
 
 class Profile(TemplateView):
     template_name="UserProfile.html"
