@@ -1,5 +1,8 @@
 {% extends 'UserNav.html' %}
 {% block nav %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/userpage.css' %}">
+
 {% if messages %}
     {% for i in messages %}
       {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
@@ -17,17 +20,17 @@
 </p>
 <div class="collapse" id="collapseExample">
 
-<form method="post" enctype="multipart/form-data"> 
-    {% csrf_token %}  
-<table class="table table-success">
-    {{form.as_table}}
-  <tr>
-    <td colspan="2" class="text-center">
-    <button class="btn btn-success">Submit</button></td>
+  <form method="post" enctype="multipart/form-data"> 
+      {% csrf_token %}  
+  <table class="table table-success">
+      {{form.as_table}}
+    <tr>
+      <td colspan="2" class="text-center">
+      <button class="btn btn-success">Submit</button></td>
 
-    </table>
-    </form>
-  </div>
+      </table>
+      </form>
+</div>
 
     {% for i in data %}
   <div class="card" style="width: 30rem;">
@@ -38,10 +41,18 @@
       <h5 class="card-title">{{i.datetime}}</h5>
       <p class="card-text">{{i.caption}}</p>
       <div class="card-footer">
-        <a href="" class="btn btn-primary">Edit</a>
-        <a href="" class="btn btn-warning">Delete</a>
+        <a href="" class="btn btn-danger">like</a>
+        <a href="" class="btn btn-secondary">Comment</a>
       </div>
     </div>
+
+    <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      {{ cform.as_p }}
+      <button class="btn btn-success">submit</button>
+    </form>
+  </div>
     {% endfor %}
 
     {% comment %} <ul class="list-group list-group-flush">
@@ -52,7 +63,69 @@
     <div class="card-body">
       <a href="#" class="card-link">Card link</a>
       <a href="#" class="card-link">Another link</a>
-    </div> {% endcomment %}
-  </div>
+    </div>
+  </div> {% endcomment %}
 
+ 
+  {% comment %} <section class="main">
+    <div class="wrapper">
+        <div class="left-col">
+            // status wrappers
+
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic"><img src="img/cover 1.png" alt=""></div>
+                        <p class="username">modern_web_channel</p>
+                    </div>
+                    <img src="img/option.PNG" class="options" alt="">
+                </div>
+                <img src="img/cover 1.png" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="img/like.PNG" class="icon" alt="">
+                        <img src="img/comment.PNG" class="icon" alt="">
+                        <img src="img/send.PNG" class="icon" alt="">
+                        <img src="img/save.PNG" class="save icon" alt="">
+                    </div>
+                    <p class="likes">1,012 likes</p>
+                    <p class="description"><span>username </span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    <p class="post-time">2 minutes ago</p>
+                </div>
+                <div class="comment-wrapper">
+                    <img src="img/smile.PNG" class="icon" alt="">
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic"><img src="img/cover 2.png" alt=""></div>
+                        <p class="username">modern_web_channel</p>
+                    </div>
+                    <img src="img/option.PNG" class="options" alt="">
+                </div>
+                <img src="img/cover 2.png" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="img/like.PNG" class="icon" alt="">
+                        <img src="img/comment.PNG" class="icon" alt="">
+                        <img src="img/send.PNG" class="icon" alt="">
+                        <img src="img/save.PNG" class="save icon" alt="">
+                    </div>
+                    <p class="likes">1,012 likes</p>
+                    <p class="description"><span>username </span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    <p class="post-time">2 minutes ago</p>
+                </div>
+                <div class="comment-wrapper">
+                    <img src="img/smile.PNG" class="icon" alt="">
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
+            // +5 more post elements
+        </div>
+    </div>
+</section> {% endcomment %}
 {% endblock nav %}

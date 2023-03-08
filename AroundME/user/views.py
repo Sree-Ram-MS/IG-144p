@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect,reverse
 from django.views.generic import View,TemplateView,CreateView,UpdateView,FormView,DeleteView
 from django.contrib.auth import logout,authenticate
-from .forms import BioForm,CPForm,PostForm
+from django.contrib.auth.views import PasswordChangeView
+from .forms import BioForm,CPForm,PostForm,CommentForm
 from .models import Bio,Posts
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -22,7 +23,7 @@ class UserHome(CreateView):
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context["data"]=Posts.objects.all().order_by('-datetime')
-        # user=req.user
+        context['cform']=CommentForm()
         return context
 
 class PostEdit(UpdateView):
@@ -36,7 +37,6 @@ class PostDelete(DeleteView):
     model=Posts
     template_name="DeletePost.html"
     success_url=reverse_lazy("Profile")
-    pk_url_kwarg="pk"
 
     
 
@@ -98,3 +98,6 @@ class ChangePassword(FormView):
         else:
             return render(req,"ChangePassword.html",{"form":form_data})
 
+# class ChangePasswordView(PasswordChangeView):
+#     template_name = 'change pswd.html'
+#     success_url = reverse_lazy('profile')    

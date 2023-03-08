@@ -3,7 +3,7 @@
 
 <h1>Delete Post</h1>
 <p>Are you sure you want to delete this post?</p>
-{% if object.image %}
+{% if object.image.url %}
 <tr>
   <td>Current Image:</td>
   <td><img src="{{ object.image.url }}" alt="{{ object.caption }}" style="max-width: 60%;"></td>

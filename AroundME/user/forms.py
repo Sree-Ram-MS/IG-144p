@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bio,Posts
+from .models import Bio,Posts,Comments
 
 class BioForm(forms.ModelForm):
     class Meta:
@@ -26,3 +26,10 @@ class PostForm(forms.ModelForm):
             "caption":forms.TextInput(),
         }
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model=Comments
+        fields =["comment"]
+        widgets={
+            "comment":forms.Textarea(attrs={"class":"form-control"}),
+        }

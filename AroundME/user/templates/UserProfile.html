@@ -167,8 +167,8 @@
                 <p class="card-text">{{i.caption}}</p>
               </div>
               <div class="card-footer">
-                <a href="{% url 'EditPost' request.user.Bio_user.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'DelPost' request.user.Bio_user.id %}" class="btn btn-warning">Delete</a>
+                <a href="{% url 'EditPost' i.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'DelPost' i.id %}" class="btn btn-warning">Delete</a>
               </div>
               </div>
               {% endfor %}

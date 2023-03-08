@@ -1,13 +1,17 @@
 {% extends 'UserNav.html' %}
 {% block nav %}
+Current Image:<br>
+<img src="{{ object.Image.url }}">
+
 <form method="post" enctype="multipart/form-data"> 
     {% csrf_token %}  
-<table class="table table-success">
-    {{form.as_table}}
-  
-<button class="btn btn-success">Submit</button></td>
+   Caption: {{ form.caption }}
+    <br>
+    File:{{ form.Image}}
+    <br>
+    <button class="btn btn-success">Submit</button></td>
 
-</table>
+
 </form>
 
 
