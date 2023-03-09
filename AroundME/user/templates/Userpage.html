@@ -42,17 +42,30 @@
       <p class="card-text">{{i.caption}}</p>
       <div class="card-footer">
         <a href="" class="btn btn-danger">like</a>
-        <a href="" class="btn btn-secondary">Comment</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+          comment
+        </button>
+        <div class="collapse" id="collapse">
+          {% for j in comments %}
+    {% if j.post.id == i.id %}
+    <div class="comment">
+      
+      {{ j.user.first_name }}:{{ j.comment }} 
+        {{ comment.created }}
+      
+    </div>
+  {% endif %}
+  {% endfor %}
+  <form method="post" action="{% url 'cmnt' i.id %}">
+    {% csrf_token %}
+    {{ cform.as_p }}
+    <button class="btn btn-success">submit</button>
+  </form>
       </div>
     </div>
+    
 
-    <div class="card-body">
-    <form method="post">
-      {% csrf_token %}
-      {{ cform.as_p }}
-      <button class="btn btn-success">submit</button>
-    </form>
-  </div>
+    
     {% endfor %}
 
     {% comment %} <ul class="list-group list-group-flush">

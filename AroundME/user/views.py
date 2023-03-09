@@ -1,9 +1,9 @@
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect
 from django.views.generic import View,TemplateView,CreateView,UpdateView,FormView,DeleteView
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.views import PasswordChangeView
 from .forms import BioForm,CPForm,PostForm,CommentForm
-from .models import Bio,Posts
+from .models import Bio,Posts,Comments
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -24,7 +24,16 @@ class UserHome(CreateView):
         context=super().get_context_data(**kwargs)
         context["data"]=Posts.objects.all().order_by('-datetime')
         context['cform']=CommentForm()
+        context["comments"]=Comments.objects.all()
         return context
+def addcomment(request,*args,**kwargs):
+    if request.method=="POST":
+        cid=kwargs.get("cid")
+        post=Posts.objects.get(id=cid)
+        user=request.user
+        cmnt=request.POST.get("comment")
+        Comments.objects.create(comment=cmnt,user=user,post=post)
+        return redirect ("userpage")
 
 class PostEdit(UpdateView):
     form_class=PostForm
