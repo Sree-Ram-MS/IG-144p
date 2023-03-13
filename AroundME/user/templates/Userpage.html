@@ -33,7 +33,7 @@
 </div>
 
     {% for i in data %}
-  <div class="card" style="width: 30rem;">
+  <div class="card justify-content:center" style="width: 50rem;">
     {% if i.Image %}
     <img class="card-img-top mb-5 " src="{{i.Image.url}}" alt="Card image cap">
     {% endif %}
@@ -41,7 +41,9 @@
       <h5 class="card-title">{{i.datetime}}</h5>
       <p class="card-text">{{i.caption}}</p>
       <div class="card-footer">
-        <a href="" class="btn btn-danger">like</a>
+
+        <a  href="{% url 'like' i.id %}" class="btn btn-danger">likes<span > {{ i.allikes.count }}  </span></a>{{ i.likeduser }}
+
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
           comment
         </button>

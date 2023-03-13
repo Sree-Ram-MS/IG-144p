@@ -106,7 +106,15 @@ class ChangePassword(FormView):
                 return redirect("CPass")
         else:
             return render(req,"ChangePassword.html",{"form":form_data})
+        
+def addlike(req,*args, **kwargs):
+    pid=kwargs.get("pid")
+    post=Posts.objects.get(id=pid)
+    user=req.user
+    post.likes.add(user)
+    post.save()
+    return redirect ("userpage")
 
 # class ChangePasswordView(PasswordChangeView):
-#     template_name = 'change pswd.html'
+#     template_name = 'change pswd.html's
 #     success_url = reverse_lazy('profile')    

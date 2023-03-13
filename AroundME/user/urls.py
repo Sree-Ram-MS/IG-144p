@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserHome,Profile,LogOut,BioAdd,BioEdit,ChangePassword,PostEdit,PostDelete,addcomment
+from .views import UserHome,Profile,LogOut,BioAdd,BioEdit,ChangePassword,PostEdit,PostDelete,addcomment,addlike
 
 urlpatterns = [
     path("userpage/",UserHome.as_view(),name="userpage"),
@@ -11,6 +11,7 @@ urlpatterns = [
     path("DelPost/<int:pk>",PostDelete.as_view(),name="DelPost"),
     path("ChangePAssword",ChangePassword.as_view(),name="CPass"),
     path("Commetn/<int:cid>",addcomment,name="cmnt"),
+    path("liked/<int:pid>",addlike,name="like"),
 
 ] 
 
